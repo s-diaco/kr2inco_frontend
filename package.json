@@ -15,7 +15,7 @@
     "build-storybook": "storybook build",
     "prettier:write": "prettier . --write",
     "prepare": "husky",
-    "test": "exit 1"
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "@ant-design/charts": "^2.1.1",
