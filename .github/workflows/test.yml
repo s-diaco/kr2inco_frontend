@@ -18,8 +18,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - '16.x'
-          - '18.x' # whichever node versions you support
+          - '20.x' # whichever node versions you support
     steps:
       - uses: actions/checkout@v3
 

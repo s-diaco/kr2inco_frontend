@@ -3,6 +3,8 @@ import { ConfigProvider } from 'antd';
 import { HelmetProvider } from 'react-helmet-async';
 import { StylesContext } from './context';
 import routes from './routes/routes.tsx';
+// TODO: delete
+// import store, { persistor } from "./store";
 
 import './App.css';
 
