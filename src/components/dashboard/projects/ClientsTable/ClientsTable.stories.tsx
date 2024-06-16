@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import ClientsData from '../../../../../public/mocks/Clients.json';
+import ClientsData from '../../../../../src/mocks/Clients.json';
 
 import { ClientsTable } from './ClientsTable.tsx';
 

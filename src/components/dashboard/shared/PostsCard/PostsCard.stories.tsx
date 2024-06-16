@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import PostsData from '../../../../../public/mocks/ScheduledPosts.json';
+import PostsData from '../../../../../src/mocks/ScheduledPosts.json';
 
 import { PostsCard } from './PostsCard.tsx';
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import PricingData from '../../../public/mocks/Pricing.json';
+import PricingData from '../../../src/mocks/Pricing.json';
 
 import { PricingTable } from './PricingTable.tsx';
 

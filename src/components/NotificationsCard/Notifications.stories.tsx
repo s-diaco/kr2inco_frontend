@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import NotificationsData from '../../../public/mocks/Notifications.json';
+import NotificationsData from '../../../src/mocks/Notifications.json';
 
 import { NotificationsCard } from './NotificationsCard.tsx';
 

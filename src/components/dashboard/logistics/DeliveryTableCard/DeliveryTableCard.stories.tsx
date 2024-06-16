@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import TruckDeliveryRequest from '../../../../../public/mocks/TruckDeliveries.json';
+import TruckDeliveryRequest from '../../../../../src/mocks/TruckDeliveries.json';
 
 import { DeliveryTableCard } from './DeliveryTableCard.tsx';
 

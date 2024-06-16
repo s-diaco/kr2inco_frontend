@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CommunityGroupsData from '../../../../../public/mocks/CommunityGroups.json';
+import CommunityGroupsData from '../../../../../src/mocks/CommunityGroups.json';
 
 import { CommunityGroupCard } from './CommunityGroupCard.tsx';
 

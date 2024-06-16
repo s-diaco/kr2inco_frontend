@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import TimelineData from '../../../public/mocks/TimelineActivity.json';
+import TimelineData from '../../../src/mocks/TimelineActivity.json';
 
 import { TimelineCard } from './TimelineCard.tsx';
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import DeliveryAnalytics from '../../../../../public/mocks/DeliveryAnalytics.json';
+import DeliveryAnalytics from '../../../../../src/mocks/DeliveryAnalytics.json';
 
 import { DeliveryAnalyticsCard } from './DeliveryAnalyticsCard.tsx';
 

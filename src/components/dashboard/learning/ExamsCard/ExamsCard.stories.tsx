@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import ExamsData from '../../../../../public/mocks/Exams.json';
+import ExamsData from '../../../../../src/mocks/Exams.json';
 
 import { ExamsCard } from './ExamsCard.tsx';
 

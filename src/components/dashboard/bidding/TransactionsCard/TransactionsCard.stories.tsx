@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import TransactionsData from '../../../../../public/mocks/BiddingTransactions.json';
+import TransactionsData from '../../../../../src/mocks/BiddingTransactions.json';
 
 import { TransactionsCard } from './TransactionsCard.tsx';
 

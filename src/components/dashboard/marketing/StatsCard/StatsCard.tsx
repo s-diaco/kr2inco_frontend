@@ -1,5 +1,6 @@
 import { CardProps, Col, Flex, Row, Tag, Typography } from 'antd';
-import { TinyColumn } from '@ant-design/charts';
+// import { TinyColumn } from '@ant-design/charts';
+import { Column } from '@ant-design/charts';
 import { Card } from '../../../index.ts';
 import CountUp from 'react-countup';
 
@@ -23,7 +24,8 @@ const ColumnChart = ({ data, color }: StatsColumnChartProps) => {
       },
     },
   };
-  return <TinyColumn {...config} />;
+  // return <TinyColumn {...config} />;
+  return <Column {...config} />;
 };
 
 type Props = {
