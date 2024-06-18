@@ -42,7 +42,8 @@
     "react-router-dom": "^6.23.1",
     "react-transition-group": "^4.4.5",
     "redux": "^5.0.1",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
