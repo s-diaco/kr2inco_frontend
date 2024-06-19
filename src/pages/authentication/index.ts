@@ -4,4 +4,3 @@ export { WelcomePage } from './Welcome.tsx';
 export { VerifyEmailPage } from './VerifyEmail.tsx';
 export { PasswordResetPage } from './PasswordReset.tsx';
 export { AccountDeactivePage } from './AccountDeactivate.tsx';
-export { Login } from './Login.tsx';

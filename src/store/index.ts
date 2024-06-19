@@ -1,7 +1,7 @@
 // TODO: delete file
 
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
+import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
 import {
   FLUSH,
   PAUSE,
@@ -11,9 +11,9 @@ import {
   PURGE,
   REGISTER,
   REHYDRATE,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import authSlice from "./slices/auth";
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import authSlice from './slices/auth';
 
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(
   {
-    key: "root",
+    key: 'root',
     version: 1,
     storage: storage,
   },
@@ -30,11 +30,12 @@ const persistedReducer = persistReducer(
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);

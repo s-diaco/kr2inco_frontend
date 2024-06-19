@@ -1,20 +1,20 @@
 // TODO: delete file
 
-import React from "react";
-import { Redirect, Route, RouteProps } from "react-router";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import React from 'react';
+import { Navigate, Route, RouteProps } from 'react-router';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
 
 const ProtectedRoute = (props: RouteProps) => {
   const auth = useSelector((state: RootState) => state.auth);
 
   if (auth.account) {
-    if (props.path === "/login") {
-      return <Redirect to={"/"} />;
+    if (props.path === '/login') {
+      return <Navigate to={'/'} />;
     }
     return <Route {...props} />;
   } else if (!auth.account) {
-    return <Redirect to={"/login"} />;
+    return <Navigate to={'/login'} />;
   } else {
     return <div>Not found</div>;
   }

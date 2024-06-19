@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation } from 'react-router';
-import authSlice from '../store/slices/auth';
+import { useNavigate, useLocation } from 'react-router';
+import authSlice from '../../store/slices/auth';
 import useSWR from 'swr';
-import { fetcher } from '../utils/axios';
-import { UserResponse } from '../utils/types';
-import { RootState } from '../store';
+import { fetcher } from '../../utils/axios';
+import { UserResponse } from '../../utils/types';
+import { RootState } from '../../store';
 
 interface LocationState {
   userId: string;
@@ -14,7 +14,7 @@ interface LocationState {
 const Profile = () => {
   const account = useSelector((state: RootState) => state.auth.account);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
 
   const userId = account?.id;
 

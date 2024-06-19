@@ -1,16 +1,16 @@
 // TODO: delete file
-import React, { useState } from "react";
-import * as Yup from "yup";
-import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
-import axios from "axios";
-import { useHistory } from "react-router";
+import React, { useState } from 'react';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 function Login() {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
 
   const handleLogin = (email: string, password: string) => {
     axios
@@ -24,7 +24,7 @@ function Login() {
         );
         dispatch(authSlice.actions.setAccount(res.data.user));
         setLoading(false);
-        history.push("/");
+        history.push('/');
       })
       .catch((err) => {
         setMessage(err.response.data.detail.toString());
@@ -33,8 +33,8 @@ function Login() {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
     onSubmit: (values) => {
       setLoading(true);
@@ -42,7 +42,7 @@ function Login() {
     },
     validationSchema: Yup.object({
       email: Yup.string().trim().required("Le nom d'utilisateur est requis"),
-      password: Yup.string().trim().required("Le mot de passe est requis"),
+      password: Yup.string().trim().required('Le mot de passe est requis'),
     }),
   });
 

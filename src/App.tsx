@@ -1,8 +1,8 @@
 // TODO: delete
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Login } from './pages/authentication';
-import { Profile } from './pages/userAccount';
+import Login from './pages/authentication/Login';
+import Profile from './pages/userAccount/Profile';
 import store, { persistor } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';

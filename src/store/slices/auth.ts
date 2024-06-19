@@ -1,7 +1,7 @@
 // TODO: delete file
 
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AccountResponse } from "../../types/account";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AccountResponse } from '../../types/account';
 
 type State = {
   token: string | null;
@@ -12,7 +12,7 @@ type State = {
 const initialState: State = { token: null, refreshToken: null, account: null };
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     setAuthTokens(
