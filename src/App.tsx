@@ -1,12 +1,12 @@
-// TODO: delete
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/authentication/Login';
-import Profile from './pages/userAccount/Profile';
+import { RouterProvider } from 'react-router-dom';
+import { ConfigProvider } from 'antd';
+import { HelmetProvider } from 'react-helmet-async';
+import { StylesContext } from './context';
 import store, { persistor } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import ProtectedRoute from './routes/ProtectedRoute';
+import router from './routes/routes.tsx';
+
 import './App.css';
 
 // color palettes: triadic #A1A7CB, #CBA1A7, #A7CBA1
@@ -31,14 +31,87 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
-        <Router>
-          <div>
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <ProtectedRoute path="/" element={<Profile />} />
-            </Routes>
-          </div>
-        </Router>
+        <HelmetProvider>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: COLOR['500'],
+                borderRadius: 6,
+                fontFamily: 'Lato, sans-serif',
+              },
+              components: {
+                Breadcrumb: {
+                  linkColor: 'rgba(0,0,0,.8)',
+                  itemColor: 'rgba(0,0,0,.8)',
+                },
+                Button: {
+                  colorLink: COLOR['500'],
+                  colorLinkActive: COLOR['700'],
+                  colorLinkHover: COLOR['300'],
+                },
+                Calendar: {
+                  colorBgContainer: 'none',
+                },
+                Card: {
+                  colorBgContainer: 'none',
+                  colorBorderSecondary: COLOR['borderColor'],
+                },
+                Carousel: {
+                  colorBgContainer: COLOR['800'],
+                  dotWidth: 8,
+                },
+                Rate: {
+                  colorFillContent: COLOR['100'],
+                  colorText: COLOR['600'],
+                },
+                Segmented: {
+                  colorBgLayout: COLOR['100'],
+                  borderRadius: 6,
+                  colorTextLabel: '#000000',
+                },
+                Table: {
+                  borderColor: COLOR['100'],
+                  colorBgContainer: 'none',
+                  headerBg: 'none',
+                  rowHoverBg: COLOR['50'],
+                },
+                Tabs: {
+                  colorBorderSecondary: COLOR['100'],
+                },
+                Timeline: {
+                  dotBg: 'none',
+                },
+                Typography: {
+                  colorLink: COLOR['500'],
+                  colorLinkActive: COLOR['700'],
+                  colorLinkHover: COLOR['300'],
+                  linkHoverDecoration: 'underline',
+                },
+              },
+            }}
+          >
+            <StylesContext.Provider
+              value={{
+                rowProps: {
+                  gutter: [
+                    { xs: 8, sm: 16, md: 24, lg: 32 },
+                    { xs: 8, sm: 16, md: 24, lg: 32 },
+                  ],
+                },
+                carouselProps: {
+                  autoplay: true,
+                  dots: true,
+                  dotPosition: 'bottom',
+                  infinite: true,
+                  slidesToShow: 3,
+                  slidesToScroll: 1,
+                },
+              }}
+            >
+              <RouterProvider router={router} />
+            </StylesContext.Provider>
+          </ConfigProvider>
+        </HelmetProvider>
       </PersistGate>
     </Provider>
   );

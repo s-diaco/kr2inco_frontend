@@ -1,20 +1,23 @@
-// TODO: delete file
-
-import React from 'react';
-import { Navigate, Route, RouteProps } from 'react-router';
+import { Navigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+import { Outlet, useLocation } from 'react-router-dom';
 
-const ProtectedRoute = (props: RouteProps) => {
+const ProtectedRoute = () => {
   const auth = useSelector((state: RootState) => state.auth);
-
+  const location = useLocation();
+  // TODO: delete
+  console.log("account:", auth)
   if (auth.account) {
-    if (props.path === '/login') {
+    /* TODO: use only "props" or "outlet"
+    if (props.path === '/auth/signin') {
       return <Navigate to={'/'} />;
     }
     return <Route {...props} />;
+    */
+    return <Outlet />;
   } else if (!auth.account) {
-    return <Navigate to={'/login'} />;
+    return <Navigate to={'/auth/signin'} state={{ from: location }} replace />;
   } else {
     return <div>Not found</div>;
   }

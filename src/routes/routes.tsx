@@ -1,4 +1,5 @@
 import { createBrowserRouter, useLocation } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
 import {
   AccountDeactivePage,
   BiddingDashboardPage,
@@ -174,42 +175,47 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/user-profile',
-    element: <PageWrapper children={<UserAccountLayout />} />,
-    errorElement: <ErrorPage />,
-    children: [
+    element: <ProtectedRoute />,
+    children:[
       {
-        index: true,
-        path: 'details',
-        element: <UserProfileDetailsPage />,
-      },
-      {
-        path: 'preferences',
-        element: <UserProfilePreferencesPage />,
-      },
-      {
-        path: 'information',
-        element: <UserProfileInformationPage />,
-      },
-      {
-        path: 'security',
-        element: <UserProfileSecurityPage />,
-      },
-      {
-        path: 'activity',
-        element: <UserProfileActivityPage />,
-      },
-      {
-        path: 'actions',
-        element: <UserProfileActionsPage />,
-      },
-      {
-        path: 'help',
-        element: <UserProfileHelpPage />,
-      },
-      {
-        path: 'feedback',
-        element: <UserProfileFeedbackPage />,
+        path: '/user-profile',
+        element: <PageWrapper children={<UserAccountLayout />} />,
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            index: true,
+            path: 'details',
+            element: <UserProfileDetailsPage />,
+          },
+          {
+            path: 'preferences',
+            element: <UserProfilePreferencesPage />,
+          },
+          {
+            path: 'information',
+            element: <UserProfileInformationPage />,
+          },
+          {
+            path: 'security',
+            element: <UserProfileSecurityPage />,
+          },
+          {
+            path: 'activity',
+            element: <UserProfileActivityPage />,
+          },
+          {
+            path: 'actions',
+            element: <UserProfileActionsPage />,
+          },
+          {
+            path: 'help',
+            element: <UserProfileHelpPage />,
+          },
+          {
+            path: 'feedback',
+            element: <UserProfileFeedbackPage />,
+          },
+        ],
       },
     ],
   },

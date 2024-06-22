@@ -19,14 +19,17 @@ import {
 import { Logo } from '../../components';
 import { useMediaQuery } from 'react-responsive';
 import { PATH_AUTH, PATH_DASHBOARD } from '../../constants';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import authSlice from '../../store/slices/auth';
 
 const { Title, Text, Link } = Typography;
 
 type FieldType = {
-  email?: string;
-  password?: string;
+  email: string;
+  password: string;
   remember?: boolean;
 };
 
@@ -34,22 +37,54 @@ export const SignInPage = () => {
   const {
     token: { colorPrimary },
   } = theme.useToken();
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
+  const handleLogin = (email: string, password: string) => {
+    axios
+      .post(`//${import.meta.env.VITE_REACT_APP_API_URL}/token/`, { "username": email, "password": password })
+      .then((res) => {
+      console.log('Success:', email);
+        dispatch(
+          authSlice.actions.setAuthTokens({
+            token: res.data.access,
+            refreshToken: res.data.refresh,
+          })
+        );
+        dispatch(authSlice.actions.setAccount(res.data.access));
+
+        // TODO: delete
+        dispatch(authSlice.actions.setAccount(res.data.user));
+        
+        setLoading(false);
+        message.open({
+          type: 'success',
+          content: 'Login successful',
+        });
+        console.log("Navigating to:", from)
+
+        // TODO: remove timeout
+        setTimeout(() => {
+          navigate(from, { replace: true });
+        }, 5000);
+      })
+      .catch((err) => {
+        message.open({
+          type: 'error',
+          content: err.toString()
+        });
+        console.log(err.toString())
+      });
+  };
+
+  const onFinish = (values: FieldType) => {
     setLoading(true);
 
-    message.open({
-      type: 'success',
-      content: 'Login successful',
-    });
-
-    setTimeout(() => {
-      navigate(PATH_DASHBOARD.default);
-    }, 5000);
+    handleLogin(values.email, values.password);
   };
 
   const onFinishFailed = (errorInfo: any) => {
