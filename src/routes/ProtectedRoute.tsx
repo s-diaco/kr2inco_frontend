@@ -7,9 +7,8 @@ const ProtectedRoute = () => {
   const auth = useSelector((state: RootState) => state.auth);
   const location = useLocation();
   // TODO: delete
-  console.log('auth.token:', auth.token);
-  // TODO: should be if ("auth.account") {
-  if (auth.token) {
+  console.log('auth:', auth);
+  if (auth.account) {
     console.log('location:', location);
     /* TODO: use only "props" or "outlet"
     if (props.path === '/auth/signin') {

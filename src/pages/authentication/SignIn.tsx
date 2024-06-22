@@ -45,13 +45,14 @@ export const SignInPage = () => {
   const from = location.state?.from?.pathname || '/dashboards/default';
 
   const handleLogin = (email: string, password: string) => {
+    setLoading(true);
     axios
       .post(`//${import.meta.env.VITE_REACT_APP_API_URL}/login/`, {
-        username: email,
+        email: email,
         password: password,
       })
       .then((res) => {
-        console.log('Success:', email);
+        console.log('Success:', res.data);
         dispatch(
           authSlice.actions.setAuthTokens({
             token: res.data.access,
@@ -78,12 +79,11 @@ export const SignInPage = () => {
           content: err.toString(),
         });
         console.log(err.toString());
+        setLoading(false);
       });
   };
 
   const onFinish = (values: FieldType) => {
-    setLoading(true);
-
     handleLogin(values.email, values.password);
   };
 
