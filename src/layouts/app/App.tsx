@@ -32,7 +32,9 @@ import SideNav from './SideNav.tsx';
 import HeaderNav from './HeaderNav.tsx';
 import FooterNav from './FooterNav.tsx';
 import { NProgress } from '../../components';
-import { PATH_LANDING } from '../../constants';
+// import { PATH_LANDING } from '../../constants';
+import { useDispatch } from 'react-redux';
+import authSlice from '../../store/slices/auth';
 
 const { Content } = Layout;
 
@@ -41,6 +43,16 @@ type AppLayoutProps = {
 };
 
 export const AppLayout = ({ children }: AppLayoutProps) => {
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(authSlice.actions.logout());
+    navigate('/auth/signin', { replace: true });
+    /* TODO: delete
+    setTimeout(() => {
+      navigate(PATH_LANDING.root);
+    }, 1000);
+    */
+  };
   const {
     token: { borderRadius },
   } = theme.useToken();
@@ -82,10 +94,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
           type: 'loading',
           content: 'signing you out',
         });
-
-        setTimeout(() => {
-          navigate(PATH_LANDING.root);
-        }, 1000);
+        handleLogout();
       },
     },
   ];

@@ -42,30 +42,30 @@ export const SignInPage = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || '/dashboards/default';
 
   const handleLogin = (email: string, password: string) => {
     axios
-      .post(`//${import.meta.env.VITE_REACT_APP_API_URL}/token/`, { "username": email, "password": password })
+      .post(`//${import.meta.env.VITE_REACT_APP_API_URL}/login/`, {
+        username: email,
+        password: password,
+      })
       .then((res) => {
-      console.log('Success:', email);
+        console.log('Success:', email);
         dispatch(
           authSlice.actions.setAuthTokens({
             token: res.data.access,
             refreshToken: res.data.refresh,
           })
         );
-        dispatch(authSlice.actions.setAccount(res.data.access));
-
-        // TODO: delete
         dispatch(authSlice.actions.setAccount(res.data.user));
-        
+
         setLoading(false);
         message.open({
           type: 'success',
           content: 'Login successful',
         });
-        console.log("Navigating to:", from)
+        console.log('Navigating to:', from);
 
         // TODO: remove timeout
         setTimeout(() => {
@@ -75,9 +75,9 @@ export const SignInPage = () => {
       .catch((err) => {
         message.open({
           type: 'error',
-          content: err.toString()
+          content: err.toString(),
         });
-        console.log(err.toString())
+        console.log(err.toString());
       });
   };
 

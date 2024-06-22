@@ -29,6 +29,7 @@ const authSlice = createSlice({
       state.account = null;
       state.refreshToken = null;
       state.token = null;
+      // TODO: no need to send a server request?
     },
   },
 });

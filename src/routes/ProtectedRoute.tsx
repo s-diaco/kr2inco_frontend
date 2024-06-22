@@ -7,8 +7,10 @@ const ProtectedRoute = () => {
   const auth = useSelector((state: RootState) => state.auth);
   const location = useLocation();
   // TODO: delete
-  console.log("account:", auth)
-  if (auth.account) {
+  console.log('auth.token:', auth.token);
+  // TODO: should be if ("auth.account") {
+  if (auth.token) {
+    console.log('location:', location);
     /* TODO: use only "props" or "outlet"
     if (props.path === '/auth/signin') {
       return <Navigate to={'/'} />;
@@ -16,7 +18,7 @@ const ProtectedRoute = () => {
     return <Route {...props} />;
     */
     return <Outlet />;
-  } else if (!auth.account) {
+  } else if (!auth.token) {
     return <Navigate to={'/auth/signin'} state={{ from: location }} replace />;
   } else {
     return <div>Not found</div>;
