@@ -47,10 +47,16 @@ export const SignInPage = () => {
   const handleLogin = (email: string, password: string) => {
     setLoading(true);
     axios
-      .post(`//${import.meta.env.VITE_REACT_APP_API_URL}/login/`, {
-        email: email,
-        password: password,
-      })
+      .post(
+        `/auth/login/`,
+        {
+          email: email,
+          password: password,
+        },
+        {
+          baseURL: import.meta.env.VITE_REACT_APP_API_URL,
+        }
+      )
       .then((res) => {
         console.log('Success:', res.data);
         dispatch(

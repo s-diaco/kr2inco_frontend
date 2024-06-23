@@ -17,10 +17,10 @@ const ProtectedRoute = () => {
     return <Route {...props} />;
     */
     return <Outlet />;
-  } else if (!auth.token) {
+  } else if (!auth.account) {
     return <Navigate to={'/auth/signin'} state={{ from: location }} replace />;
   } else {
-    return <div>Not found</div>;
+    return <Navigate to={'errors/404'} />;
   }
 };
 

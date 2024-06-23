@@ -48,6 +48,7 @@ axiosService.interceptors.response.use(
   }
 );
 
+// TODO: test refresh token
 // @ts-ignore
 const refreshAuthLogic = async (failedRequest) => {
   const { refreshToken } = store.getState().auth;
@@ -59,7 +60,7 @@ const refreshAuthLogic = async (failedRequest) => {
           refresh: refreshToken,
         },
         {
-          baseURL: process.env.REACT_APP_API_URL,
+          baseURL: import.meta.env.VITE_REACT_APP_API_URL,
         }
       )
       .then((resp) => {
