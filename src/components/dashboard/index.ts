@@ -53,3 +53,4 @@ export {
   TruckListCard,
   DeliveryRequestCard,
 } from './logistics';
+export { IncoFinTable } from './k2inco';

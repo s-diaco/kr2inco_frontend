@@ -42,6 +42,7 @@ export const PATH_DASHBOARD = {
   bidding: path(ROOTS_DASHBOARD, '/bidding'),
   learning: path(ROOTS_DASHBOARD, '/learning'),
   logistics: path(ROOTS_DASHBOARD, '/logistics'),
+  kr2inco: path(ROOTS_DASHBOARD, '/k2inco'),
 };
 
 export const PATH_SITEMAP = {

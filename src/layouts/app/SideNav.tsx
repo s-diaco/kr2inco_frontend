@@ -79,6 +79,11 @@ const items: MenuProps['items'] = [
       'logistics',
       null
     ),
+    getItem(
+      <Link to={PATH_DASHBOARD.kr2inco}>Financial</Link>,
+      'financial',
+      null
+    ),
   ]),
   getItem(
     <Link to={PATH_ABOUT.root}>About</Link>,

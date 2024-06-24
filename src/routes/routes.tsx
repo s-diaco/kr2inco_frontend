@@ -37,6 +37,7 @@ import {
   WelcomePage,
   LearningDashboardPage,
   LogisticsDashboardPage,
+  FinancialDashboardPage,
 } from '../pages';
 import {
   CorporateLayout,
@@ -128,6 +129,10 @@ const router = createBrowserRouter([
         path: 'logistics',
         element: <LogisticsDashboardPage />,
       },
+      {
+        path: 'k2inco',
+        element: <FinancialDashboardPage />,
+      },
     ],
   },
   {
@@ -176,7 +181,7 @@ const router = createBrowserRouter([
   },
   {
     element: <ProtectedRoute />,
-    children:[
+    children: [
       {
         path: '/user-profile',
         element: <PageWrapper children={<UserAccountLayout />} />,
@@ -192,7 +197,7 @@ const router = createBrowserRouter([
             element: <UserProfilePreferencesPage />,
           },
           {
-            path: 'information',
+            path: 'personal-information',
             element: <UserProfileInformationPage />,
           },
           {

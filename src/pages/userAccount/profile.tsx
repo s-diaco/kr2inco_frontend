@@ -15,7 +15,7 @@ interface LocationState {
 const Profile = () => {
   const account = useSelector((state: RootState) => state.auth.account);
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const userId = account?.id;
 
@@ -23,7 +23,7 @@ const Profile = () => {
 
   const handleLogout = () => {
     dispatch(authSlice.actions.setLogout());
-    history.push('/login');
+    navigate('/login');
   };
   return (
     <div className="w-full h-screen">
