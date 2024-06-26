@@ -92,35 +92,6 @@ export const FinancialDashboardPage = () => {
           { xs: 8, sm: 16, md: 24, lg: 32 },
         ]}
       >
-        {
-          <Col span={24}>
-            <Card
-              title="Recently added projects"
-              extra={<Button>View all projects</Button>}
-            >
-              {finDataError ? (
-                <Alert
-                  message="Error"
-                  description={finDataError.toString()}
-                  type="error"
-                  showIcon
-                />
-              ) : finDataLoading ? (
-                <Loader />
-              ) : (
-                <Row gutter={[16, 16]}>
-                  {finData.slice(0, 4).map((o: Projects) => {
-                    return (
-                      <Col xs={24} sm={12} xl={6} key={o.project_id}>
-                        <Button>Work in Progress ...</Button>
-                      </Col>
-                    );
-                  })}
-                </Row>
-              )}
-            </Card>
-          </Col>
-        }
         <Col span={24}>
           <Card
             title="Financial"

@@ -9,12 +9,12 @@ const getColumns = (data) => {
         return a;
       }, arr);
     }, []);
-    const logtext = res.map((item) => ({
+    const columns = res.map((item) => ({
       title: item,
       dataIndex: item,
       key: item,
     }));
-    return logtext.slice(19, 23);
+    return columns.slice(19, 23);
   }
 };
 
