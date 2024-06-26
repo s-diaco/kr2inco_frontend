@@ -1,6 +1,6 @@
 import { Table, TableProps } from 'antd';
 
-// TODO: fix column calcs
+// TODO: don't look in every record to find keys. just use first one.
 const getColumns = (data) => {
   if (data) {
     const res = data.reduce(function (arr, o) {
