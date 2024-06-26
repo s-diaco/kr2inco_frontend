@@ -4,8 +4,9 @@ import createAuthRefreshInterceptor from 'axios-auth-refresh';
 import store from '../store';
 import authSlice from '../store/slices/auth';
 
+const apiUrl= import.meta.env.VITE_REACT_APP_API_URL
 const axiosService = axios.create({
-  baseURL: import.meta.env.VITE_REACT_APP_API_URL,
+  baseURL: apiUrl,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -50,7 +51,7 @@ axiosService.interceptors.response.use(
 
 // TODO: test refresh token
 // @ts-ignore
-const refreshAuthLogic = async (failedRequest, config) => {
+const refreshAuthLogic = async (failedRequest) => {
   const { refreshToken } = store.getState().auth;
   if (refreshToken !== null) {
     return axios
@@ -60,7 +61,7 @@ const refreshAuthLogic = async (failedRequest, config) => {
           refresh: refreshToken,
         },
         {
-          baseURL: config.baseURL,
+          baseURL: apiUrl,
         }
       )
       .then((resp) => {

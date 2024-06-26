@@ -19,7 +19,7 @@ const Profile = () => {
 
   const userId = account?.id;
 
-  const user = useSWR<UserResponse>(`/user/${userId}/`, fetcher);
+  const user = useSWR<UserResponse>(`/user/${userId}/`, fetcher)
 
   const handleLogout = () => {
     dispatch(authSlice.actions.setLogout());
@@ -35,13 +35,14 @@ const Profile = () => {
           Deconnexion
         </button>
       </div>
-      {user.data ? (
-        <div className="w-full h-full text-center items-center">
-          <p className="self-center my-auto">Welcome, {user.data?.username}</p>
-        </div>
-      ) : (
-        <p className="text-center items-center">Loading ...</p>
-      )}
+        {
+          user.data ?
+            <div className="w-full h-full text-center items-center">
+              <p className="self-center my-auto">Welcome, {user.data?.username}</p>
+            </div>
+            :
+            <p className="text-center items-center">Loading ...</p>
+        }
     </div>
   );
 };

@@ -10,6 +10,7 @@ import {
 import { Projects } from '../../../../types';
 
 const COLUMNS = [
+  /* TODO: fix
   {
     title: 'Name',
     dataIndex: 'project_name',
@@ -90,6 +91,17 @@ const COLUMNS = [
     dataIndex: 'start_date',
     key: 'proj_start_date',
   },
+  */
+  {
+    title: 'Start',
+    dataIndex: 'TechnicalSpecification',
+    key: 'TechnicalSpecification',
+  },
+  {
+    title: 'date',
+    dataIndex: 'textbox195',
+    key: 'textbox195',
+  },
 ];
 
 type Props = {
@@ -97,7 +109,6 @@ type Props = {
 } & TableProps<any>;
 
 export const IncoFinTable = ({ data, ...others }: Props) => {
-  console.log('TODO: delete', 'columns:', COLUMNS, 'data:', { data });
   return (
     <Table
       dataSource={data}

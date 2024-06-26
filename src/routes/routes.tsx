@@ -47,6 +47,7 @@ import {
 } from '../layouts';
 import React, { ReactNode, useEffect } from 'react';
 import { AboutPage } from '../pages/About.tsx';
+import Profile from '../pages/userAccount/profile.tsx';
 
 // Custom scroll restoration function
 export const ScrollToTop: React.FC = () => {
@@ -130,8 +131,13 @@ const router = createBrowserRouter([
         element: <LogisticsDashboardPage />,
       },
       {
-        path: 'k2inco',
-        element: <FinancialDashboardPage />,
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: 'k2inco',
+            element: <FinancialDashboardPage />,
+          },
+        ],
       },
     ],
   },
@@ -219,6 +225,10 @@ const router = createBrowserRouter([
           {
             path: 'feedback',
             element: <UserProfileFeedbackPage />,
+          },
+          {
+            path: 'profile',
+            element: <Profile />,
           },
         ],
       },

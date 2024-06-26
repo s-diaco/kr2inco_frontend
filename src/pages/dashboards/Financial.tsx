@@ -1,16 +1,11 @@
 import { Alert, Button, Col, Row, Segmented, Space } from 'antd';
 import {
   Card,
-  ClientsTable,
   IncoFinTable,
   Loader,
   PageHeader,
-  ProjectsCard,
-  ProjectsTable,
-  RevenueCard,
 } from '../../components';
 import { Column } from '@ant-design/charts';
-import { Projects } from '../../types';
 import { useState } from 'react';
 import {
   CloudUploadOutlined,
@@ -22,8 +17,6 @@ import { DASHBOARD_ITEMS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useFetchData } from '../../hooks';
-import { fetcher } from '../../utils/axios';
-import { UserResponse } from '../../utils/types';
 import useSWR from 'swr';
 
 const RevenueColumnChart = () => {
@@ -151,9 +144,10 @@ const PROJECT_TABS = [
 
 export const FinancialDashboardPage = () => {
   const reportId = '1';
-  const { user: finData } = useSWR<UserResponse>(
-    `/hsreport/${reportId}/`,
-    fetcher
+  // TODO: useSWR
+  // const { data, error } = useSWR('/hsreport/${reportId}', useFetchData);
+  const { data: finData } = useFetchData(
+    `/hsreport/${reportId}/`
   );
   const [projectTabsKey, setProjectsTabKey] = useState<string>('all');
 

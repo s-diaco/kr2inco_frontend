@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { fetcher } from '../utils/axios';
 
 const useFetchData = (url: string) => {
   const [data, setData] = useState<any>([]);
@@ -7,10 +8,12 @@ const useFetchData = (url: string) => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await fetch(url);
-      const json = await response.json();
+      const response = await fetcher(url);
+      // TODO: check
+      // const json = await response.json();
+      // setData(json);
 
-      setData(json);
+      setData(response);
     } catch (error) {
       setError(error);
     } finally {
