@@ -4,7 +4,7 @@ import createAuthRefreshInterceptor from 'axios-auth-refresh';
 import store from '../store';
 import authSlice from '../store/slices/auth';
 
-const apiUrl= import.meta.env.VITE_REACT_APP_API_URL
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const axiosService = axios.create({
   baseURL: apiUrl,
   headers: {
@@ -77,6 +77,7 @@ const refreshAuthLogic = async (failedRequest) => {
       })
       .catch((err) => {
         if (err.response && err.response.status === 401) {
+          // TODO: does it handle logout properly?
           store.dispatch(authSlice.actions.setLogout());
         }
       });
